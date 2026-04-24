@@ -54,3 +54,8 @@ button:hover::after,
 button:hover::before {
   transform: scaleX(1);
 }
+
+#neko{
+  display: block;
+  margin: auto;
+}

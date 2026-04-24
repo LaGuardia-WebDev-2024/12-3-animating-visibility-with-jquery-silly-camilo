@@ -10,6 +10,8 @@
     <button id="button2">Slide</button>
     <button id="button3">Fade In</button>
     <button id="button4">Surprise</button>
+    <button id="button5">ok get rid of surprise</button>
+    <button id="button6">wait bring him back</button>
 
     <h1 id="snake-h1">Snake</h1>
     <img
@@ -17,33 +19,68 @@
       src="https://upload.wikimedia.org/wikipedia/commons/4/40/Chrysopelea_taprobanica.jpg"
       width="400"
     />
+
+    <img
+      id="neko"
+      src="https://static.wikia.nocookie.net/project-diva/images/a/a6/Cyber_Cat.png/revision/latest?cb=20251227063423"
+      width="400"
+    />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
       
       var $pic = $("#snake-pic");
       var $h1 = $("#snake-h1");
 
+      $("#neko").hide();
+      $("#button5").hide();
+      $("#button6").hide();
+
       // ======================== Button #1
       $("#button1").click(function () {
-        $pic.hide();
-        $h1.hide();
+        $h1.slideUp();
+        $pic.slideUp();
       });
 
       // ======================== Button #2
       $("#button2").click(function () {
-     
+          $h1.hide();
+          $pic.hide();
+
+          $h1.slideDown(1000, function () {
+            $pic.slideDown(1000);
+          })
       });
 
       // ======================== Button #3
       $("#button3").click(function () {
-    
+          $h1.hide();
+          $pic.hide();
+
+          $h1.fadeIn(1000, function () {
+            $pic.fadeIn(1000);
+          })
       });
 
        // ======================== Button #3
       $("#button4").click(function () {
-    
+          $h1.fadeOut(1000);
+          $pic.fadeOut(1000, function(){
+           $("#neko").fadeToggle(1000, function (){
+            $("#button5").fadeIn(10);
+           });
+          });
       });
 
+      $("#button5").click(function (){
+        $("#neko").slideUp(300, function(){
+          $("#button6").fadeIn(10);
+        });
+      });
+
+      $("#button6").click(function (){
+        $("#neko").slideDown(800);
+      });
 
     </script>
   </body>
